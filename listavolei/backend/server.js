@@ -6,9 +6,27 @@ const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
 const app = express();
-app.use(cors({
-    origin: "https://gabbzin.github.io/listavolei/"
-}));
+
+const allowedOrigins = [
+    "https://gabbzin.github.io"
+];
+
+// middleware cors
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            // liberar requests sem origin (ex: curl, postman)
+            if (!origin) return callback(null, true);
+
+            if (allowedOrigins.indexOf(origin) === -1) {
+                const msg = `O CORS não permite a origem ${origin}`;
+                return callback(new Error(msg), false);
+            }
+            return callback(null, true);
+        },
+    })
+);
+
 app.use(express.json()); // Garante que o corpo da requisição seja interpretado como JSON
 
 app.post("/users", async (req, res) => {

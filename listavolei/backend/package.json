@@ -1,23 +1,25 @@
 {
-  "name": "estudandobackend",
+  "name": "listavolei-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend da lista de vôlei com Express e Prisma",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "prisma generate && node server.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gabbzin/EstudandoBackEnd.git"
+    "url": "git+https://github.com/gabbzin/listavolei.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "bugs": {
-    "url": "https://github.com/gabbzin/EstudandoBackEnd/issues"
+    "url": "https://github.com/gabbzin/listavolei/issues"
   },
-  "homepage": "https://github.com/gabbzin/EstudandoBackEnd#readme",
+  "homepage": "https://github.com/gabbzin/listavolei#readme",
   "dependencies": {
     "@prisma/client": "^6.11.1",
     "cors": "^2.8.5",

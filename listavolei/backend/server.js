@@ -6,7 +6,7 @@ const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
 const app = express();
-app.use(cors())
+app.use(cors());
 app.use(express.json()); // Garante que o corpo da requisição seja interpretado como JSON
 
 app.post("/users", async (req, res) => {
@@ -54,4 +54,7 @@ app.get("/users", async (req, res) => {
 //     res.status(204).send();
 // });
 
-app.listen(3001);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});

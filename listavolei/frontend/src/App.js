@@ -9,7 +9,7 @@ const POSICOES = [
 ];
 
 export default function App() {
-    const API_BASE = process.env.REACT_APP_API_URL || `http://localhost:3001`;
+    const API_BASE = process.env.REACT_APP_API_URL || `https://listavolei-production.up.railway.app`;
     const [jogadores, setJogadores] = useState([]);
     const [nome, setNome] = useState("");
     const [posicao, setPosicao] = useState(POSICOES[0]);
@@ -31,7 +31,7 @@ export default function App() {
                 setJogadores([]);
             })
             .finally(() => setLoading(false));
-    }, []);
+    }, [API_BASE]);
 
     const adicionarJogador = async (e) => {
     e.preventDefault();

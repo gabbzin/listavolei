@@ -6,7 +6,9 @@ const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "https://gabbzin.github.io/listavolei/"
+}));
 app.use(express.json()); // Garante que o corpo da requisição seja interpretado como JSON
 
 app.post("/users", async (req, res) => {

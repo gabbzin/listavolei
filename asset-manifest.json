@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/listavolei/static/css/main.b20b63e5.css",
+    "main.js": "/listavolei/static/js/main.ca0f6e78.js",
+    "static/js/453.670e15c7.chunk.js": "/listavolei/static/js/453.670e15c7.chunk.js",
+    "index.html": "/listavolei/index.html",
+    "main.b20b63e5.css.map": "/listavolei/static/css/main.b20b63e5.css.map",
+    "main.ca0f6e78.js.map": "/listavolei/static/js/main.ca0f6e78.js.map",
+    "453.670e15c7.chunk.js.map": "/listavolei/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b20b63e5.css",
+    "static/js/main.ca0f6e78.js"
+  ]
+}

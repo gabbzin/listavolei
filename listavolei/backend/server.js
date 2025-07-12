@@ -29,26 +29,40 @@ app.use(
 
 app.use(express.json()); // Garante que o corpo da requisição seja interpretado como JSON
 
+// Rota POST corrigida
 app.post("/users", async (req, res) => {
-    const { name, position } = req.body;
+    try {
+        const { name, position } = req.body;
 
-    if (!name?.trim() || !position?.trim()) {
-        return res
-            .status(400)
-            .json({ error: "Nome e posição são obrigatórios" });
+        if (!name?.trim() || !position?.trim()) {
+            return res
+                .status(400)
+                .json({ error: "Nome e posição são obrigatórios" });
+        }
+
+        const user = await prisma.user.create({
+            data: { name: name.trim(), position: position.trim() },
+        });
+
+        res.status(201).json(user);
+
+    } catch (error) {
+        console.error("Erro ao criar usuário:", error);
+        res.status(500).json({ error: "Não foi possível criar o usuário." });
     }
-
-    const user = await prisma.user.create({
-        data: { name: name.trim(), position: position.trim() },
-    });
-
-    res.status(201).json(user);
 });
 
+// Rota GET corrigida
 app.get("/users", async (req, res) => {
-    const users = await prisma.user.findMany();
+    try {
+        const users = await prisma.user.findMany();
+        res.status(200).json(users);
 
-    res.status(200).json(users);
+    } catch (error) {
+        // Captura qualquer erro do Prisma
+        console.error("Erro ao buscar usuários:", error); // Loga o erro no console do servidor
+        res.status(500).json({ error: "Não foi possível buscar os usuários." });
+    }
 });
 
 // app.put("/users/:id", async (req, res) => {
